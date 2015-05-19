@@ -1,0 +1,3 @@
+IPADDR=10
+#IPADDR=`ip addr show dev eth0 | grep "inet\ " | sed 's/\// /g' | awk '{print $2}'`
+PORT=443
