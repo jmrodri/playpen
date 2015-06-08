@@ -1,7 +1,10 @@
-sudo cp /home/vagrant/fusor/server/app/lib/actions/fusor/deployment/deploy_cloudforms.rb /opt/rh/ruby193/root/usr/share/gems/gems/fusor_server-0.0.1/app/lib/actions/fusor/deployment/deploy_cloudforms.rb
-sudo mkdir -p /opt/rh/ruby193/root/usr/share/gems/gems/fusor_server-0.0.1/app/lib/utils/fusor
-sudo cp /home/vagrant/fusor/server/app/lib/utils/fusor/ssh_connection.rb /opt/rh/ruby193/root/usr/share/gems/gems/fusor_server-0.0.1/app/lib/utils/fusor/ssh_connection.rb
-sudo cp /home/vagrant/fusor/server/app/lib/utils/fusor/command_utils.rb /opt/rh/ruby193/root/usr/share/gems/gems/fusor_server-0.0.1/app/lib/utils/fusor/command_utils.rb
-sudo cp /home/vagrant/fusor/server/app/lib/actions/fusor/deploy.rb /opt/rh/ruby193/root/usr/share/gems/gems/fusor_server-0.0.1/app/lib/actions/fusor/deploy.rb
-#sudo cp /home/vagrant/fusor/server/app/lib/actions/fusor/deployment/host_converter.rb /opt/rh/ruby193/root/usr/share/gems/gems/fusor_server-0.0.1/app/lib/actions/fusor/deployment/host_converter.rb
-#sudo rm -f /opt/rh/ruby193/root/usr/share/gems/gems/fusor_server-0.0.1/app/lib/actions/fusor/deployment/host_converter.rb
+FUSOR_GIT_DIR=/home/vagrant/fusor
+FUSOR_APP_DIR=/opt/rh/ruby193/root/usr/share/gems/gems/fusor_server-0.0.1
+
+sudo rsync -avz $FUSOR_GIT_DIR/server/app/lib/actions/fusor/deploy.rb $FUSOR_APP_DIR/app/lib/actions/fusor/deploy.rb
+sudo rsync -avz $FUSOR_GIT_DIR/server/app/lib/actions/fusor/deployment/deploy_cloud_forms.rb $FUSOR_APP_DIR/app/lib/actions/fusor/deployment/deploy_cloud_forms.rb
+sudo rsync -avz $FUSOR_GIT_DIR/server/app/lib/utils/cloud_forms/provider.rb $FUSOR_APP_DIR/app/lib/utils/cloud_forms/provider.rb
+
+mkdir -p $FUSOR_APP_DIR/app/lib/utils/fusor/
+sudo rsync -avz  $FUSOR_GIT_DIR/server/app/lib/utils/fusor/command_utils.rb $FUSOR_APP_DIR/app/lib/utils/fusor/command_utils.rb
+sudo rsync -avz $FUSOR_GIT_DIR/server/app/lib/utils/fusor/ssh_connection.rb $FUSOR_APP_DIR/app/lib/utils/fusor/ssh_connection.rb
